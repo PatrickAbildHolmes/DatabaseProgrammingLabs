@@ -14,16 +14,16 @@ DROP Table Functions;
 -- Initialization
 CREATE TABLE Functions (
     function VARCHAR2(10)
-        CONSTRAINT function_pk PRIMARY KEY (function),
+        CONSTRAINT function_pk PRIMARY KEY,
     min_mice NUMBER(3)
         CONSTRAINT min_mice_ch CHECK(min_mice > 5),
-    max_mice NUMBER(3)
+    max_mice NUMBER(3),
         CONSTRAINT max_mice_ch CHECK(200 > max_mice and max_mice >= min_mice)
 );
 
 CREATE TABLE Enemies (
     enemy_name VARCHAR2(15)
-        CONSTRAINT enemy_name_pk PRIMARY KEY (enemy_name),
+        CONSTRAINT enemy_name_pk PRIMARY KEY,
     hostility_degree NUMBER(2)
         CONSTRAINT hostility_degree_ch CHECK(hostility_degree >=1 and hostility_degree<=10),
     species VARCHAR2(15),
@@ -32,9 +32,9 @@ CREATE TABLE Enemies (
 
 CREATE TABLE Bands (
     band_no NUMBER(2)
-        CONSTRAINT bands_no_pk PRIMARY KEY (band_no),
+        CONSTRAINT bands_no_pk PRIMARY KEY,
     name VARCHAR2(20) 
-        CONSTRAINT name_nn NOT NULL,
+        CONSTRAINT bands_name_nn NOT NULL,
     site VARCHAR2(15)
         CONSTRAINT site_un UNIQUE,
     band_chief VARCHAR2(15)
@@ -43,26 +43,26 @@ CREATE TABLE Bands (
 
 CREATE TABLE Cats (
     name VARCHAR2(10)
-        CONSTRAINT name_nn NOT NULL,
+        CONSTRAINT cats_name_nn NOT NULL,
     gender VARCHAR2(1)
         CONSTRAINT gender_ch CHECK(gender IN ('D', 'M')),
     nickname VARCHAR2(15)
-        CONSTRAINT nickname_pk PRIMARY KEY (nickname),
-    function VARCHAR2(10)
+        CONSTRAINT nickname_pk PRIMARY KEY,
+    function VARCHAR2(10),
         CONSTRAINT function_fk FOREIGN KEY (function) REFERENCES Functions(function),
-    chief VARCHAR2(15)
+    chief VARCHAR2(15),
         CONSTRAINT chief_fk FOREIGN KEY (chief) REFERENCES Cats(nickname),
     in_herd_since DATE DEFAULT (SYSDATE),
     mice_ration NUMBER(3),
     mice_extra NUMBER(3),
-    band_no NUMBER(2)
+    band_no NUMBER(2),
         CONSTRAINT band_no_fk FOREIGN KEY (band_no) REFERENCES Bands(band_no)
 );
 
 CREATE TABLE Incidents (
-    nickname VARCHAR2(15)
+    nickname VARCHAR2(15),
         CONSTRAINT nickname_fk FOREIGN KEY (nickname) REFERENCES Cats(nickname),
-    enemy_name VARCHAR2(15)
+    enemy_name VARCHAR2(15),
         CONSTRAINT enemy_name_fk FOREIGN KEY (enemy_name) REFERENCES Enemies(enemy_name),
     incident_date DATE
         CONSTRAINT incident_date_nn NOT NULL,
