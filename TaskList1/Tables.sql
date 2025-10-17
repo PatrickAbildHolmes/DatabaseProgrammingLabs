@@ -7,8 +7,9 @@
 DROP TABLE Incidents;
 DROP TABLE Cats;
 DROP TABLE Bands;
-DROP Table Functions;
 DROP TABLE Enemies;
+DROP Table Functions;
+-- select 'drop table '||table_name||' cascade constraints;' from user_tables; ?
 
 -- Initialization
 CREATE TABLE Functions (
