@@ -12,18 +12,18 @@ DROP TABLE Enemies;
 
 -- Initialization
 CREATE TABLE Functions (
-    function VARCHAR2(10),
+    function VARCHAR2(10)
         CONSTRAINT function_pk PRIMARY KEY (function),
-    min_mice NUMBER(3),
+    min_mice NUMBER(3)
         CONSTRAINT min_mice_ch CHECK(min_mice > 5),
-    max_mice NUMBER(3),
+    max_mice NUMBER(3)
         CONSTRAINT max_mice_ch CHECK(200 > max_mice and max_mice >= min_mice)
 );
 
 CREATE TABLE Enemies (
-    enemy_name VARCHAR2(10),
+    enemy_name VARCHAR2(15)
         CONSTRAINT enemy_name_pk PRIMARY KEY (enemy_name),
-    hostility_degree NUMBER(2),
+    hostility_degree NUMBER(2)
         CONSTRAINT hostility_degree_ch CHECK(hostility_degree >=1 and hostility_degree<=10),
     species VARCHAR2(15),
     bribe VARCHAR2(20)
@@ -32,42 +32,44 @@ CREATE TABLE Enemies (
 CREATE TABLE Bands (
     band_no NUMBER(2)
         CONSTRAINT bands_no_pk PRIMARY KEY (band_no),
-    name VARCHAR2(20),
-        CONSTRAINT name_nn NOT NULL (name),
-    site VARCHAR2(15),
-        CONSTRAINT site_un UNIQUE (site),
-    band_chief VARCHAR2(15),
-        CONSTRAINT bands_chief_un UNIQUE (band_chief),
+    name VARCHAR2(20) 
+        CONSTRAINT name_nn NOT NULL,
+    site VARCHAR2(15)
+        CONSTRAINT site_un UNIQUE,
+    band_chief VARCHAR2(15)
+        CONSTRAINT bands_chief_un UNIQUE
 );
 
 CREATE TABLE Cats (
-    name VARCHAR2(10),
-        CONSTRAINT name_nn NOT NULL (name),
-    gender VARCHAR2(1), 
-        CONSTRAINT gender_ch CHECK(gender IN ('W', 'M')),
-    nickname VARCHAR2(15),
+    name VARCHAR2(10)
+        CONSTRAINT name_nn NOT NULL,
+    gender VARCHAR2(1)
+        CONSTRAINT gender_ch CHECK(gender IN ('D', 'M')),
+    nickname VARCHAR2(15)
         CONSTRAINT nickname_pk PRIMARY KEY (nickname),
-    function VARCHAR2(10),
+    function VARCHAR2(10)
         CONSTRAINT function_fk FOREIGN KEY (function) REFERENCES Functions(function),
-    chief VARCHAR2(15),
-        CONSTRAINT chief_fk FOREIGN KEY (nickname) REFERENCES Cats(nickname),
+    chief VARCHAR2(15)
+        CONSTRAINT chief_fk FOREIGN KEY (chief) REFERENCES Cats(nickname),
     in_herd_since DATE DEFAULT (SYSDATE),
     mice_ration NUMBER(3),
-    mice_extra NUMBER(3)
-    band_no NUMBER(2),
+    mice_extra NUMBER(3),
+    band_no NUMBER(2)
         CONSTRAINT band_no_fk FOREIGN KEY (band_no) REFERENCES Bands(band_no)
 );
 
 CREATE TABLE Incidents (
-    nickname VARCHAR2(15),
+    nickname VARCHAR2(15)
         CONSTRAINT nickname_fk FOREIGN KEY (nickname) REFERENCES Cats(nickname),
-    enemy_name VARCHAR2(15),
+    enemy_name VARCHAR2(15)
         CONSTRAINT enemy_name_fk FOREIGN KEY (enemy_name) REFERENCES Enemies(enemy_name),
-    incident_date DATE,
-        CONSTRAINT incident_date_nn NOT NULL (incident_date),
+    incident_date DATE
+        CONSTRAINT incident_date_nn NOT NULL,
+    incident_desc VARCHAR2(50),
     CONSTRAINT incidents_pk PRIMARY KEY(nickname, enemy_name)
 );
 
-ALTER TABLE Bands (
-    ADD CONSTRAINT bands_chief_fk FOREIGN KEY (bands_chief) REFERENCES Cats(nickname)
-);
+-- Insert data before adding this constraint
+ALTER TABLE Bands
+    ADD CONSTRAINT bands_chief_fk FOREIGN KEY (band_chief) REFERENCES Cats(nickname)
+;

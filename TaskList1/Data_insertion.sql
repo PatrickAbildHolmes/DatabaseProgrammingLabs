@@ -26,7 +26,20 @@ INSERT INTO Enemies (enemy_name, hostility_degree, species, bribe) VALUES ('SLYB
 INSERT INTO Enemies (enemy_name, hostility_degree, species, bribe) VALUES ('SLIM',1,'PINE',NULL);
 INSERT INTO Enemies (enemy_name, hostility_degree, species, bribe) VALUES ('BASIL',3,'ROOSTER','HEN TO THE HERD');
 
--- Cats(name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) 
+-- Bands(band_no, name, site, band_chief*) . band_chief is a FK that references Cats, but we add that constraint after adding all Cats records.
+-- All Bands are added first, so Cats records can reference it in their band_no
+INSERT INTO Bands(band_no, name, site, band_chief) VALUES (1,'SUPERIORS','WHOLE AREA','TIGER');
+INSERT INTO Bands(band_no, name, site, band_chief) VALUES (2,'BLACK KNIGHTS','FIELD','BALD');
+INSERT INTO Bands(band_no, name, site, band_chief) VALUES (3,'WHITE HUNTERS','ORCHARD','ZOMBIES');
+INSERT INTO Bands(band_no, name, site, band_chief) VALUES (4,'PINTO HUNTERS','HILLOCK','REEF');
+INSERT INTO Bands(band_no, name, site, band_chief) VALUES (5,'ROCKERS','FARM',NULL);
+
+-- Cats(name, gender, nickname, function, chief*, in_herd_since, mice_ration, mice_extra, band_no*) 
+INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('MRUCZEK','M','TIGER','BOSS',NULL,'2002-01-01',103,33,1); -- Chief-Chief
+INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('KOREK','M','ZOMBIES','THUG','TIGER','2004-03-16',75,13,3); -- Sub-chief
+INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('BOLEK','M','BALD','THUG','TIGER','2006-08-15',72,21,2); -- Sub-chief
+INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('PUCEK','M','REEF','CATCHING','TIGER','2006-10-15',65,NULL,4); -- Sub-chief
+INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('PUNIA','D','HEN','CATCHING','ZOMBIES','2008-01-01',61,NULL,3);-- Sub-chief
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('JACEK','M','CAKE','CATCHING','BALD','2008-12-01',67,NULL,2);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('BARI','M','TUBE','CATCHER','BALD','2009-09-01',56,NULL,2);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('MICKA','D','LOLA','NICE','TIGER','2009-10-14',25,47,1);
@@ -34,30 +47,18 @@ INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_r
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('SONIA','D','FLUFFY','NICE','ZOMBIES','2010-11-18',20,35,3);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('LATKA','D','EAR','CAT','REEF','2011-01-01',40,NULL,4);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('DUDEK','M','SMALL','CAT','REEF','2011-05-15',40,NULL,4);
-INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('MRUCZEK','M','TIGER','BOSS',NULL,'2002-01-01',103,33,1);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('CHYTRY','M','BOLEK','DIVISIVE','TIGER','2002-05-05',50,NULL,1);
-INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('KOREK','M','ZOMBIES','THUG','TIGER','2004-03-16',75,13,3);
-INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('BOLEK','M','BALD','THUG','TIGER','2006-08-15',72,21,2);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('ZUZIA','D','FAST','CATCHING','BALD','2006-07-21',65,NULL,2);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('RUDA','D','LITTLE','NICE','TIGER','2006-09-17',22,42,1);
-INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('PUCEK','M','REEF','CATCHING','TIGER','2006-10-15',65,NULL,4);
-INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('PUNIA','D','HEN','CATCHING','ZOMBIES','2008-01-01',61,NULL,3);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('BELA','D','MISS','NICE','BALD','2008-02-01',24,28,2);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('KSAWERY','M','MAN','CATCHER','REEF','2008-07-12',51,NULL,4);
 INSERT INTO Cats (name, gender, nickname, function, chief, in_herd_since, mice_ration, mice_extra, band_no) VALUES ('MELA','D','LADY','CATCHER','REEF','2008-11-01',51,NULL,4);
 
--- Bands(band_no, name, site, band_chief) 
-INSERT INTO Bands(band_no, name, site, band_chief) VALUES (1,'SUPERIORS','WHOLE AREA','TIGER');
-INSERT INTO Bands(band_no, name, site, band_chief) VALUES (2,'BLACK KNIGHTS','FIELD','BALD');
-INSERT INTO Bands(band_no, name, site, band_chief) VALUES (3,'WHITE HUNTERS','ORCHARD','ZOMBIES');
-INSERT INTO Bands(band_no, name, site, band_chief) VALUES (4,'PINTO HUNTERS','HILLOCK','REEF');
-INSERT INTO Bands(band_no, name, site, band_chief) VALUES (5,'ROCKERS','FARM',NULL);
-
--- Incidents(nickname, enemy_name, incident_date, incident_desc) 
+-- Incidents(nickname*, enemy_name*, incident_date, incident_desc)
 INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('TIGER','KAZIO','2004-10-13','HE HAS TRYING TO STICK ON THE FORK');
-INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('ZOMBIES', 'UNRULY DYZIO','2005-03-07','HE FOOTED AN EYE FROM PROCAST');
+INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('ZOMBIES','UNRULY DYZIO','2005-03-07','HE FOOTED AN EYE FROM PROCAST');
 INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('BOLEK','KAZIO','2005-03-29','HE CLEANED DOG');
-INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('FAST', 'STUPID SOPHIA' ,'2006-09-12','SHE USED THE CAT AS A CLOTH');
+INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('FAST','STUPID SOPHIA' ,'2006-09-12','SHE USED THE CAT AS A CLOTH');
 INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('LITTLE','SLYBOOTS','2007-03-07','HE RECOMMENDED HIMSELF AS A HUSBAND');
 INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('TIGER','WILD BILL','2007-06-12','HE TRIED TO KILL');
 INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('BOLEK','WILD BILL','2007-11-10','HE BITE THE EAR');
@@ -71,5 +72,5 @@ INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES
 INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('FLUFFY','SLIM','2010-11-19','SHE THREW CONES');
 INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('HEN','DUN','2010-12-14','HE CHASED');
 INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('SMALL','SLYBOOTS','2011-07-13','HE TOOK THE STOLEN EGGS');
-INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('EAR', 'UNRULY DYZIO','2011-07-14','HE THREW STONES');
+INSERT INTO Incidents(nickname, enemy_name, incident_date, incident_desc) VALUES ('EAR','UNRULY DYZIO','2011-07-14','HE THREW STONES');
 
