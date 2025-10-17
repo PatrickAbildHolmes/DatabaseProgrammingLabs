@@ -38,7 +38,6 @@ CREATE TABLE Bands (
         CONSTRAINT site_un UNIQUE (site),
     band_chief VARCHAR2(15),
         CONSTRAINT bands_chief_un UNIQUE (band_chief),
-    --    CONSTRAINT bands_chief_fk FOREIGN KEY (bands_chief) REFERENCES Cats(nickname)
 );
 
 CREATE TABLE Cats (
@@ -52,11 +51,11 @@ CREATE TABLE Cats (
         CONSTRAINT function_fk FOREIGN KEY (function) REFERENCES Functions(function),
     chief VARCHAR2(15),
         CONSTRAINT chief_fk FOREIGN KEY (nickname) REFERENCES Cats(nickname),
-    band_no NUMBER(2),
-        CONSTRAINT band_no_fk FOREIGN KEY (band_no) REFERENCES Bands(band_no),
     in_herd_since DATE DEFAULT (SYSDATE),
     mice_ration NUMBER(3),
     mice_extra NUMBER(3)
+    band_no NUMBER(2),
+        CONSTRAINT band_no_fk FOREIGN KEY (band_no) REFERENCES Bands(band_no)
 );
 
 CREATE TABLE Incidents (
