@@ -4,11 +4,11 @@
 -- 4) Incidents depends on Cats and Enemies
 
 -- Clean-up
-DROP TABLE Incidents;
-DROP TABLE Cats;
-DROP TABLE Bands;
-DROP TABLE Enemies;
-DROP Table Functions;
+DROP TABLE Incidents CASCADE CONSTRAINTS;
+DROP TABLE Cats CASCADE CONSTRAINTS;
+DROP TABLE Bands CASCADE CONSTRAINTS;
+DROP TABLE Enemies CASCADE CONSTRAINTS;
+DROP TABLE Functions CASCADE CONSTRAINTS;
 -- select 'drop table '||table_name||' cascade constraints;' from user_tables; ?
 
 -- Initialization

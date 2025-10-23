@@ -1,14 +1,19 @@
-- 1) Functions and Enemies depend on no-one
+-- 1) Functions and Enemies depend on no-one
 -- 2) Bands depends on Cats (FK-dependency, alter table)
 -- 3) Cats depends on Bands, Function and Cats (self-reference, alter table)
 -- 4) Incidents depends on Cats and Enemies
 
 -- Clean-up
-DROP TABLE Incidents;
-DROP TABLE Cats;
-DROP TABLE Bands;
-DROP TABLE Enemies;
-DROP Table Functions;
+-- I used ChatGPT to generate these DROP TABLE statements since it was getting late, 
+-- and StackOverflow gave these overly intricate iterative loops, when I knew there was a simple solution,
+-- but I could not remember it (this being "CASCADE CONSTRAINS").
+-- Also some of the suggestions was to "DROP USER (my_username) CASCADE", which I do not dare to execute.
+-- My promt was "I have an oracle database I create with this script [Tables.sql + Data_insertion.sql]. How do I cleanly drop all tables?"
+DROP TABLE Incidents CASCADE CONSTRAINTS;
+DROP TABLE Cats CASCADE CONSTRAINTS;
+DROP TABLE Bands CASCADE CONSTRAINTS;
+DROP TABLE Enemies CASCADE CONSTRAINTS;
+DROP TABLE Functions CASCADE CONSTRAINTS;
 -- select 'drop table '||table_name||' cascade constraints;' from user_tables; ?
 
 -- Initialization
