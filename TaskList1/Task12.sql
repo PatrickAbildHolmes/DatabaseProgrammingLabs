@@ -19,7 +19,7 @@ GROUP BY function
 HAVING AVG(NVL(mice_ration,0)+NVL(mice_extra,0)) > 50
 ORDER BY function;
 
-
+-- chapter 1 and 2, page 32
 /*
 CREATE TABLE Cats (
     name VARCHAR2(10)

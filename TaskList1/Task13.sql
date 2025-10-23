@@ -20,6 +20,7 @@ FROM Cats
 GROUP BY band_no, gender
 ORDER BY band_no, gender;
 
+-- chapter 1 and 2, page 32
 /*
 CREATE TABLE Cats (
     name VARCHAR2(10)

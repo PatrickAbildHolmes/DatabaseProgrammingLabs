@@ -27,4 +27,5 @@ CONNECT BY PRIOR nickname=chief
 START with chief IS NULL
 ORDER BY level;
 
+-- chapter 1 and 2, page 34
 -- https://stackoverflow.com/questions/31884233/repeat-function-equivalent-in-oracle

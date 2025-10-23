@@ -15,7 +15,7 @@ GROUp BY nickname
 HAVING COUNT(enemy_name) >=2
 ORDER BY nickname;
 
-
+-- chapter 1 and 2, page 29
 /*
 CREATE TABLE Incidents (
     nickname VARCHAR2(15),

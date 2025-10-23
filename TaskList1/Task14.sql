@@ -23,6 +23,7 @@ CONNECT BY PRIOR nickname=chief
 START WITH gender = 'M' AND function = 'THUG'
 ORDER BY level;
 
+-- chapter 1 and 2, page 34
 /*
 CREATE TABLE Cats (
     name VARCHAR2(10)
