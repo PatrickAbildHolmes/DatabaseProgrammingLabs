@@ -59,3 +59,4 @@ Results:
 18  ZUZIA	780
 */
 -- https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/CASE-Expressions.html#GUID-CA29B333-572B-4E1D-BA64-851FABDBAE96
+

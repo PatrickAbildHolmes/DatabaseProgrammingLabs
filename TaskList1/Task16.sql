@@ -29,3 +29,17 @@ CONNECT BY PRIOR chief=nickname;
 -- https://www.techonthenet.com/oracle/functions/lpad.php
 -- ´ORDER BY´ was a trap
 -- If I added the mice_extra=0 constraint, Tiger and Bald wouldn't be included, since they receive extra
+
+/*
+Results:
+BOLEK
+    TIGER
+CAKE
+    BALD
+        TIGER
+MAN
+    REEF
+        TIGER
+REEF
+    TIGER
+*/

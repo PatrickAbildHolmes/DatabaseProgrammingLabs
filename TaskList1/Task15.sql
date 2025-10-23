@@ -29,3 +29,14 @@ ORDER BY level;
 
 -- chapter 1 and 2, page 34
 -- https://stackoverflow.com/questions/31884233/repeat-function-equivalent-in-oracle
+
+/*
+Results:
+0 MRUCZEK	Master yourself	BOSS
+===>1 BOLEK	TIGER	THUG
+===>1 KOREK	TIGER	THUG
+===>1 MICKA	TIGER	NICE
+===>1 RUDA	TIGER	NICE
+===>===>2 BELA	BALD	NICE
+===>===>2 SONIA	ZOMBIES	NICE
+*/

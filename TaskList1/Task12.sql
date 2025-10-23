@@ -21,21 +21,8 @@ ORDER BY function;
 
 -- chapter 1 and 2, page 32
 /*
-CREATE TABLE Cats (
-    name VARCHAR2(10)
-        CONSTRAINT cats_name_nn NOT NULL,
-    gender VARCHAR2(1)
-        CONSTRAINT gender_ch CHECK(gender IN ('D', 'M')),
-    nickname VARCHAR2(15)
-        CONSTRAINT nickname_pk PRIMARY KEY,
-    function VARCHAR2(10),
-        CONSTRAINT function_fk FOREIGN KEY (function) REFERENCES Functions(function),
-    chief VARCHAR2(15),
-        CONSTRAINT chief_fk FOREIGN KEY (chief) REFERENCES Cats(nickname),
-    in_herd_since DATE DEFAULT (SYSDATE),
-    mice_ration NUMBER(3),
-    mice_extra NUMBER(3),
-    band_no NUMBER(2),
-        CONSTRAINT band_no_fk FOREIGN KEY (band_no) REFERENCES Bands(band_no)
-);
+Results:
+Number of cats = 1 hunts as CATCHER and eats max. 51 mice per month
+Number of cats = 2 hunts as CATCHING and eats max. 65 mice per month
+Number of cats = 4 hunts as NICE and eats max. 72 mice per month
 */

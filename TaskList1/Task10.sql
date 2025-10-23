@@ -39,7 +39,27 @@ SELECT nickname||' - '||
 FROM Cats
 GROUP BY nickname
 ORDER BY nickname;
-
+/*
+Results:
+BALD - unique
+BOLEK - unique
+CAKE - unique
+EAR - unique
+FAST - unique
+FLUFFY - unique
+HEN - unique
+LADY - unique
+LITTLE - unique
+LOLA - unique
+MAN - unique
+MISS - unique
+REEF - unique
+SMALL - unique
+TIGER - unique
+TUBE - unique
+ZERO - unique
+ZOMBIES - unique
+*/
 SELECT chief||' - '||
         CASE WHEN COUNT(*) = 1 THEN 'unique'  
              ELSE 'non-unique' 
@@ -48,5 +68,14 @@ FROM Cats
 WHERE chief IS NOT NULL
 GROUP BY chief
 ORDER BY chief;
-
+/*
+Results:
+BALD - non-unique
+HEN - unique
+REEF - non-unique
+TIGER - non-unique
+ZOMBIES - non-unique
+*/
 -- https://docs.oracle.com/en/database/other-databases/nosql-database/20.3/sqlreferencefornosql/is-null-and-is-not-null-operators.html
+
+
