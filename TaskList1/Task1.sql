@@ -9,7 +9,7 @@ REKS            HE BARKED EXTREMELY RUDELY
 BETHOVEN        HE DID NOT SHARE THE PORRIDGE WILD BILL HE TOOK THE TAIL 
 */
 
-SELECT enemy_name, incident_desc FROM Incidents WHERE incident_date BETWEEN TO_DATE('2009-01-01','YYYY-MM-DD') AND TO_DATE('2009-12-31','YYYY-MM-DD');
+SELECT enemy_name "Enemy", incident_desc "Fault description" FROM Incidents WHERE incident_date BETWEEN TO_DATE('2009-01-01','YYYY-MM-DD') AND TO_DATE('2009-12-31','YYYY-MM-DD');
 
 /*
 Result:

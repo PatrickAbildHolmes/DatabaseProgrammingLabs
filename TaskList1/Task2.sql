@@ -8,7 +8,7 @@ ZUZIA           CATCHING   2006-07-21
 RUDA            NICE       2006-09-17            
 */
 
-SELECT name, function, in_herd_since FROM Cats WHERE in_herd_since BETWEEN TO_DATE('2005-09-01', 'YYYY-MM-DD') AND TO_DATE('2007-07-31', 'YYYY-MM-DD');
+SELECT name "NAME", function "FUNCTION", in_herd_since "WITH AS FROM" FROM Cats WHERE in_herd_since BETWEEN TO_DATE('2005-09-01', 'YYYY-MM-DD') AND TO_DATE('2007-07-31', 'YYYY-MM-DD');
 
 /*
 Result:

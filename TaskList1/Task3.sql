@@ -8,7 +8,7 @@ SLIM            PINE            1
 WILD BILL       DOG             10  
 */
 
-SELECT enemy_name, species, hostility_degree FROM Enemies ORDER BY hostility_degree ASC;
+SELECT enemy_name "ENEMY", species "SPECIES", hostility_degree "HOSTILITY DEGREE" FROM Enemies ORDER BY hostility_degree ASC;
 
 /*
 Results:
