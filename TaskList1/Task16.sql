@@ -16,3 +16,14 @@ MAN
 REEF                             
     TIGER  
 */
+
+SELECT LPAD('    ', (level-1))||nickname "Path of chiefs"
+FROM Cats
+WHERE gender = 'M' 
+    --AND (mice_extra = 0 OR mice_extra IS NULL)
+    AND in_herd_since <= ADD_MONTHS(TRUNC(SYSDATE), -12*11 ) -- Year <= 2014, 
+START WITH nickname IN ('BOLEK','CAKE','MAN','REEF')
+CONNECT BY PRIOR chief=nickname;
+
+-- ´ORDER BY´ was a trap
+-- If I added the mice_extra=0 constraint, Tiger and Bald wouldn't be included, since they receive extra
