@@ -31,3 +31,22 @@ Uniqueness of the chief
      TIGER - non-unique   
    ZOMBIES - non-unique  
 */
+
+SELECT nickname||' - '||
+        CASE WHEN COUNT(*) = 1 THEN 'unique'  
+             ELSE 'non-unique' 
+        END AS "Uniqueness of the nickname" 
+FROM Cats
+GROUP BY nickname
+ORDER BY nickname;
+
+SELECT chief||' - '||
+        CASE WHEN COUNT(*) = 1 THEN 'unique'  
+             ELSE 'non-unique' 
+        END AS "Uniqueness of the chief" 
+FROM Cats
+WHERE chief IS NOT NULL
+GROUP BY chief
+ORDER BY chief;
+
+-- https://docs.oracle.com/en/database/other-databases/nosql-database/20.3/sqlreferencefornosql/is-null-and-is-not-null-operators.html

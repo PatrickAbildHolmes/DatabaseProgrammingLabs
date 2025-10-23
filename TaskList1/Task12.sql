@@ -8,3 +8,34 @@ Number of cats=  1 hunts as CATCHER    and eats max.  51.00 mice per month
 Number of cats=  2 hunts as CATCHING   and eats max.  65.00 mice per month   
 Number of cats=  4 hunts as NICE       and eats max.  72.00 mice per month
 */
+
+SELECT 
+'Number of cats = '|| COUNT(*)||
+' hunts as '||function||
+' and eats max. '||MAX(NVL(mice_ration,0)+NVL(mice_extra,0))||' mice per month' 
+FROM Cats
+WHERE function != 'BOSS' AND gender !='M'
+GROUP BY function
+HAVING AVG(NVL(mice_ration,0)+NVL(mice_extra,0)) > 50
+ORDER BY function;
+
+
+/*
+CREATE TABLE Cats (
+    name VARCHAR2(10)
+        CONSTRAINT cats_name_nn NOT NULL,
+    gender VARCHAR2(1)
+        CONSTRAINT gender_ch CHECK(gender IN ('D', 'M')),
+    nickname VARCHAR2(15)
+        CONSTRAINT nickname_pk PRIMARY KEY,
+    function VARCHAR2(10),
+        CONSTRAINT function_fk FOREIGN KEY (function) REFERENCES Functions(function),
+    chief VARCHAR2(15),
+        CONSTRAINT chief_fk FOREIGN KEY (chief) REFERENCES Cats(nickname),
+    in_herd_since DATE DEFAULT (SYSDATE),
+    mice_ration NUMBER(3),
+    mice_extra NUMBER(3),
+    band_no NUMBER(2),
+        CONSTRAINT band_no_fk FOREIGN KEY (band_no) REFERENCES Bands(band_no)
+);
+*/
